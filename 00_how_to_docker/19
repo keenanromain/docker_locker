@@ -1,13 +1,27 @@
-docker run --name Abathur -w /home/python -p 3000:3000 -dt python:2-slim
+docker run --name Abathur -v $HOME:/root -p 3000:3000 -dt python:2-slim
+# docker exec -it Abathur bash
 docker exec Abathur apt-get update -y
 docker exec Abathur apt-get install -y python-pip python-dev build-essential
 docker exec Abathur pip install flask
-docker exec Abathur touch main.py
-docker exec Abathur bash -c “echo ‘from flask import Flask’ >> main.py”
-docker exec Abathur bash -c “echo ‘app = Flask(__name__)’ >> main.py”
-docker exec Abathur bash -c “echo \“@app.route(‘/’)\” >> main.py”
-docker exec Abathur bash -c “echo \“def hello_world():\” >> main.py”
-docker exec Abathur bash -c “echo \”    return ‘<h1>Hello World</h1>‘\” >> main.py”
-docker exec Abathur bash -c ‘export FLASK_APP=/home/python/main.py && flask run -h 0.0.0.0 -p 3000’
+docker exec Abathur touch /root/main.py
+docker exec Abathur bash -c "echo 'from flask import Flask' >> /root/main.py"
+docker exec Abathur bash -c "echo 'app = Flask(__name__)' >> /root/main.py"
+docker exec Abathur bash -c "echo \"@app.route('/')\" >> /root/main.py"
+docker exec Abathur bash -c "echo \"def hello_world():\" >> /root/main.py"
+docker exec Abathur bash -c "echo \"	return '<h1>Hello World</h1>'	\" >> /root/main.py"
+docker exec Abathur bash -c 'export FLASK_APP=/root/main.py && flask run -h 0.0.0.0 -p 3000'
+
+
+#docker run --name Abathur -w /home/python -p 3000:3000 -dt python:2-slim
+#docker exec Abathur apt-get update -y
+#docker exec Abathur apt-get install -y python-pip python-dev build-essential
+#docker exec Abathur pip install flask
+#docker exec Abathur touch main.py
+#docker exec Abathur bash -c “echo ‘from flask import Flask’ >> main.py”
+#docker exec Abathur bash -c “echo ‘app = Flask(__name__)’ >> main.py”
+#docker exec Abathur bash -c “echo \“@app.route(‘/’)\” >> main.py”
+#docker exec Abathur bash -c “echo \“def hello_world():\” >> main.py”
+#docker exec Abathur bash -c “echo \”    return ‘<h1>Hello World</h1>‘\” >> main.py”
+#docker exec Abathur bash -c ‘export FLASK_APP=/home/python/main.py && flask run -h #0.0.0.0 -p 3000’
 
 #docker run -d --name=Abathur -p $(docker-machine ip char):3000:3000 python:2-slim
