@@ -9,3 +9,5 @@ docker exec Abathur bash -c “echo \“@app.route(‘/’)\” >> main.py”
 docker exec Abathur bash -c “echo \“def hello_world():\” >> main.py”
 docker exec Abathur bash -c “echo \”    return ‘<h1>Hello World</h1>‘\” >> main.py”
 docker exec Abathur bash -c ‘export FLASK_APP=/home/python/main.py && flask run -h 0.0.0.0 -p 3000’
+
+#docker run -d --name=Abathur -p $(docker-machine ip char):3000:3000 python:2-slim

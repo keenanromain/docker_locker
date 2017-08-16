@@ -1,1 +1,1 @@
-docker-machine stop aiur && docker-machine rm -y aiur
+docker-machine stop Aiur && docker-machine rm -y Aiur

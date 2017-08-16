@@ -1,1 +1,1 @@
-docker-machine create --driver virtualbox aiur
+docker-machine create --driver virtualbox Aiur
